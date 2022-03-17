@@ -20,7 +20,7 @@ jobs:
       - run:
           name: Build udgram-frontend
           command: npm run build
-          - aws-cli/install
+      - aws-cli/setup:
       - run:
           name: Deploy udgram-frontend
           command: aws s3 cp --recursive --acl public-read ./www s3://my-udgram-bucket/
