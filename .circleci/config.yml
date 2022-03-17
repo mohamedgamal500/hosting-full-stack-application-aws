@@ -4,6 +4,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@5.0.1
+  aws-cli: circleci/aws-cli@1.4.1
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
@@ -19,10 +20,14 @@ jobs:
       - run:
           name: Build udgram-frontend
           command: npm run build
+          - aws-cli/install
+      - run:
+          name: Deploy udgram-frontend
+          command: aws s3 cp --recursive --acl public-read ./www s3://my-udgram-bucket/
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  say-hello-workflow:
+  udgram-workflow:
     jobs:
       - udgram-frontend
