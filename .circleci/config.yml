@@ -35,20 +35,17 @@ jobs:
           app-dir: ~/app/udagram-api
       - run:
           name: Build udgram-backend
-          command: |-
-            npm run build
-            printenv > www/.env
-            npm run archive
-      - eb/setup
-      - run:
-          name: Deploy udgram-backend
-          command: |-
-            eb deploy udgram-api-dev
+          command: npm run build
+      # - eb/setup
+      # - run:
+      #     name: Deploy udgram-backend
+      #     command: |-
+      #       eb deploy udgram-api-dev
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   udgram-workflow:
     jobs:
-      - udgram-frontend
+      # - udgram-frontend
       - udgram-backend
