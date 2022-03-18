@@ -5,7 +5,7 @@ version: 2.1
 orbs:
   node: circleci/node@5.0.1
   aws-cli: circleci/aws-cli@1.4.1
-
+  eb: circleci/aws-elastic-beanstalk@2.0.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
@@ -25,9 +25,30 @@ jobs:
           name: Deploy udgram-frontend
           command: aws s3 cp --recursive --acl public-read ./www s3://my-udgram-bucket/
 
+  udgram-backend:
+    working_directory: ~/app/udagram-api
+    executor: node/default
+    steps:
+      - checkout:
+          path: ~/app
+      - node/install-packages:
+          app-dir: ~/app/udagram-api
+      - run:
+          name: Build udgram-backend
+          command: |-
+            npm run build
+            printenv > www/.env
+            npm run archive
+      - eb/setup
+      - run:
+          name: Deploy udgram-backend
+          command: |-
+            eb deploy udgram-api-dev
+
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   udgram-workflow:
     jobs:
       - udgram-frontend
+      - udgram-backend
