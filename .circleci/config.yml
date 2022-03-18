@@ -35,10 +35,7 @@ jobs:
           app-dir: ~/app/udagram-api
       - run:
           name: Build udgram-backend
-          command: |-
-            npm run build
-            printenv > www/.env
-            npm run compress
+          command: npm run build
       - eb/setup
       - run:
           name: Deploy udgram-backend
