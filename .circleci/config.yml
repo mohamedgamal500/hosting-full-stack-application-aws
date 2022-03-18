@@ -39,18 +39,18 @@ jobs:
             npm run build
             printenv > www/.env
             npm run compress
-      # - eb/setup
-      # - run:
-      #     name: Deploy udgram-backend
-      #     command: |-
-      #       eb init my-udgram-api --platform node.js --region us-east-1
-      #       eb use my-udgram-api-dev
-      #       eb deploy my-udgram-api-dev
+      - eb/setup
+      - run:
+          name: Deploy udgram-backend
+          command: |-
+            eb init my-udgram-api --platform node.js --region us-east-1
+            eb use my-udgram-api-dev
+            eb deploy my-udgram-api-dev
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   udgram-workflow:
     jobs:
-      # - udgram-frontend
+      - udgram-frontend
       - udgram-backend
