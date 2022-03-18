@@ -40,6 +40,7 @@ jobs:
       - run:
           name: Deploy udgram-backend
           command: |-
+            eb init my-udgram-api --platform node.js --region us-east-1
             eb use my-udgram-api-dev
             eb deploy my-udgram-api-dev
 
@@ -48,5 +49,5 @@ jobs:
 workflows:
   udgram-workflow:
     jobs:
-      - udgram-frontend
+      # - udgram-frontend
       - udgram-backend
