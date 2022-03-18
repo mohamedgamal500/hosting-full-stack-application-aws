@@ -36,11 +36,11 @@ jobs:
       - run:
           name: Build udgram-backend
           command: npm run build
-      # - eb/setup
-      # - run:
-      #     name: Deploy udgram-backend
-      #     command: |-
-      #       eb deploy udgram-api-dev
+      - eb/setup
+      - run:
+          name: Deploy udgram-backend
+          command: |-
+            eb deploy udgram-api-dev
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
