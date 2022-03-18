@@ -4,7 +4,7 @@
 
 using AWS S3 Bucket for deploying The udagram-frontend application
 
-URL: `my-udgram-bucket.s3-website-us-east-1.amazonaws.com/home`
+URL: `my-udgram-bucket.s3-website-us-east-1.amazonaws.com`
 
 #### Elastic Beanstalk
 
