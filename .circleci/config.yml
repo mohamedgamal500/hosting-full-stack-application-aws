@@ -49,5 +49,5 @@ jobs:
 workflows:
   udgram-workflow:
     jobs:
-      - udgram-frontend
+      # - udgram-frontend
       - udgram-backend
