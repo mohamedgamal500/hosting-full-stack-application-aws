@@ -10,7 +10,7 @@ URL: `my-udgram-bucket.s3-website-us-east-1.amazonaws.com`
 
 using AWS Elastic Beanstalk (eb) for deploying the udagram-api
 
-URL: `http://udgram-api-dev.eba-e9pxbpzm.us-east-1.elasticbeanstalk.com/api/v0`
+URL: `http://my-udgram-api-dev.eba-gfhjdju8.us-east-1.elasticbeanstalk.com/api/v0`
 
 #### RDS Postgres
 
