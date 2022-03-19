@@ -41,6 +41,7 @@ jobs:
           name: Deploy udgram-backend
           command: |-
             eb init my-udgram-api --platform node.js --region us-east-1
+            eb setenv POSTGRES_PORT=$POSTGRES_PORT POSTGRES_HOST=$POSTGRES_HOST POSTGRES_DB=$POSTGRES_DB POSTGRES_USERNAME=$POSTGRES_USERNAME POSTGRES_PASSWORD=$POSTGRES_PASSWORD JWT_SECRET=$JWT_SECRET
             eb use my-udgram-api-dev
             eb deploy my-udgram-api-dev
 
