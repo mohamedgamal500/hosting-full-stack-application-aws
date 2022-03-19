@@ -50,5 +50,11 @@ jobs:
 workflows:
   udgram-workflow:
     jobs:
-      - udgram-frontend
-      - udgram-backend
+      - udgram-frontend:
+          filters:
+            branches:
+              only: main
+      - udgram-backend:
+          filters:
+            branches:
+              only: main
